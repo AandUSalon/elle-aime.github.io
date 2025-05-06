@@ -7,6 +7,7 @@ import About from "@/components/About";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import { motion, useScroll, useSpring } from "framer-motion";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 const Index = () => {
   const { scrollYProgress } = useScroll();
@@ -41,20 +42,22 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-cafe-red z-50 origin-left"
-        style={{ scaleX }}
-      />
-      <Navbar />
-      <main className="flex-grow">
-        <Hero />
-        <Menu />
-        <About />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+    <TooltipProvider>
+      <div className="min-h-screen flex flex-col">
+        <motion.div
+          className="fixed top-0 left-0 right-0 h-1 bg-cafe-red z-50 origin-left"
+          style={{ scaleX }}
+        />
+        <Navbar />
+        <main className="flex-grow">
+          <Hero />
+          <Menu />
+          <About />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
+    </TooltipProvider>
   );
 };
 
