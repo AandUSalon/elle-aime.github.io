@@ -1,14 +1,51 @@
 
+import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Menu from "@/components/Menu";
 import About from "@/components/About";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import { motion, useScroll, useSpring } from "framer-motion";
 
 const Index = () => {
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
+  useEffect(() => {
+    // Smooth scroll to section when clicking on navigation links
+    const handleAnchorClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      const href = target.closest('a')?.getAttribute('href');
+      
+      if (href?.startsWith('#') && href !== '#') {
+        e.preventDefault();
+        const targetId = href.substring(1);
+        const targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80, // Adjust for header height
+            behavior: 'smooth'
+          });
+        }
+      }
+    };
+
+    document.addEventListener('click', handleAnchorClick);
+    return () => document.removeEventListener('click', handleAnchorClick);
+  }, []);
+
   return (
     <div className="min-h-screen flex flex-col">
+      <motion.div
+        className="fixed top-0 left-0 right-0 h-1 bg-cafe-red z-50 origin-left"
+        style={{ scaleX }}
+      />
       <Navbar />
       <main className="flex-grow">
         <Hero />

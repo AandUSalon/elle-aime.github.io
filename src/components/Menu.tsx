@@ -1,6 +1,7 @@
 
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
 
 type Drink = {
   name: string;
@@ -26,25 +27,56 @@ const Menu = () => {
     { name: "Freshly Squeezed Juices", price: "6.25-9.50" }
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.3
+      }
+    }
+  };
+
   return (
     <section id="menu" className="py-16 md:py-24 bg-cafe-cream">
       <div className="cafe-container">
-        <div className="text-center mb-12">
+        <motion.div 
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           <h2 className="section-subtitle">Discover Our</h2>
           <h3 className="section-title">Boissons - Drinks</h3>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          <div className="relative">
+          <motion.div 
+            className="relative"
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
             <div className="absolute -top-4 -left-4 w-24 h-24 bg-cafe-red rounded-full opacity-10"></div>
             <Card className="border border-cafe-wood/20 bg-white/60 backdrop-blur-sm overflow-hidden">
               <CardContent className="p-6">
-                <img 
+                <motion.img 
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.3 }}
                   src="/lovable-uploads/e2e54234-d5bd-4a62-96de-56b790e594db.png" 
                   alt="Coffee at Elle Aime Cafe" 
                   className="w-full h-48 object-cover rounded-md mb-4"
                 />
-                <ul className="space-y-4">
+                <motion.ul 
+                  className="space-y-4"
+                  variants={containerVariants}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                >
                   {drinks.slice(0, 7).map((drink, index) => (
                     <MenuItem 
                       key={index}
@@ -53,21 +85,35 @@ const Menu = () => {
                       isHighlighted={index % 3 === 0}
                     />
                   ))}
-                </ul>
+                </motion.ul>
               </CardContent>
             </Card>
-          </div>
+          </motion.div>
           
-          <div className="relative">
+          <motion.div 
+            className="relative"
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
             <div className="absolute -top-4 -right-4 w-24 h-24 bg-cafe-wood rounded-full opacity-10"></div>
             <Card className="border border-cafe-wood/20 bg-white/60 backdrop-blur-sm overflow-hidden">
               <CardContent className="p-6">
-                <img 
+                <motion.img 
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.3 }}
                   src="/lovable-uploads/5be94d14-4a68-4654-b232-d14dfa1889a9.png" 
                   alt="Pastries at Elle Aime Cafe" 
                   className="w-full h-48 object-cover rounded-md mb-4"
                 />
-                <ul className="space-y-4">
+                <motion.ul 
+                  className="space-y-4"
+                  variants={containerVariants}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                >
                   {drinks.slice(7).map((drink, index) => (
                     <MenuItem 
                       key={index + 7}
@@ -76,10 +122,10 @@ const Menu = () => {
                       isHighlighted={(index + 7) % 3 === 0}
                     />
                   ))}
-                </ul>
+                </motion.ul>
               </CardContent>
             </Card>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
@@ -93,8 +139,15 @@ type MenuItemProps = {
 };
 
 const MenuItem = ({ name, price, isHighlighted = false }: MenuItemProps) => {
+  const itemVariants = {
+    hidden: { opacity: 0, y: 10 },
+    visible: { opacity: 1, y: 0 }
+  };
+
   return (
-    <li 
+    <motion.li 
+      variants={itemVariants}
+      whileHover={{ x: 5 }}
       className={cn(
         "flex justify-between items-center py-2 border-b border-dashed border-cafe-brown/20",
         isHighlighted && "font-medium"
@@ -107,7 +160,7 @@ const MenuItem = ({ name, price, isHighlighted = false }: MenuItemProps) => {
         {name}
       </span>
       <span className="text-cafe-brown">${price}</span>
-    </li>
+    </motion.li>
   );
 };
 

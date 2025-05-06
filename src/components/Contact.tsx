@@ -1,67 +1,116 @@
 
 import { Card, CardContent } from "@/components/ui/card";
 import { Coffee } from "lucide-react";
+import { motion } from "framer-motion";
 
 const Contact = () => {
   return (
     <section id="contact" className="py-16 md:py-24 bg-cafe-lightorange">
       <div className="cafe-container">
-        <div className="text-center mb-12">
+        <motion.div 
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           <h2 className="section-subtitle">Visit Us</h2>
           <h3 className="section-title">Find Our Café</h3>
-        </div>
+        </motion.div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          <Card className="border-cafe-wood/20 shadow-md bg-white">
-            <CardContent className="p-6">
-              <div className="flex items-center justify-center mb-4">
-                <div className="h-16 w-16 rounded-full bg-cafe-red/10 flex items-center justify-center">
-                  <Coffee size={32} className="text-cafe-red" />
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <Card className="border-cafe-wood/20 shadow-md bg-white">
+              <CardContent className="p-6">
+                <motion.div 
+                  className="flex items-center justify-center mb-4"
+                  whileHover={{ rotate: [0, -10, 10, -10, 0] }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <div className="h-16 w-16 rounded-full bg-cafe-red/10 flex items-center justify-center">
+                    <Coffee size={32} className="text-cafe-red" />
+                  </div>
+                </motion.div>
+                <h4 className="text-xl font-semibold text-cafe-brown text-center mb-4">
+                  Opening Hours
+                </h4>
+                <div className="space-y-2">
+                  <motion.div 
+                    className="flex justify-between"
+                    whileHover={{ x: 5 }}
+                  >
+                    <span className="text-cafe-brown/80">Monday - Friday</span>
+                    <span className="font-medium text-cafe-brown">7:00 AM - 7:00 PM</span>
+                  </motion.div>
+                  <motion.div 
+                    className="flex justify-between"
+                    whileHover={{ x: 5 }}
+                  >
+                    <span className="text-cafe-brown/80">Saturday</span>
+                    <span className="font-medium text-cafe-brown">8:00 AM - 7:00 PM</span>
+                  </motion.div>
+                  <motion.div 
+                    className="flex justify-between"
+                    whileHover={{ x: 5 }}
+                  >
+                    <span className="text-cafe-brown/80">Sunday</span>
+                    <span className="font-medium text-cafe-brown">8:00 AM - 6:00 PM</span>
+                  </motion.div>
                 </div>
-              </div>
-              <h4 className="text-xl font-semibold text-cafe-brown text-center mb-4">
-                Opening Hours
-              </h4>
-              <div className="space-y-2">
-                <div className="flex justify-between">
-                  <span className="text-cafe-brown/80">Monday - Friday</span>
-                  <span className="font-medium text-cafe-brown">7:00 AM - 7:00 PM</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-cafe-brown/80">Saturday</span>
-                  <span className="font-medium text-cafe-brown">8:00 AM - 7:00 PM</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-cafe-brown/80">Sunday</span>
-                  <span className="font-medium text-cafe-brown">8:00 AM - 6:00 PM</span>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
+          </motion.div>
           
-          <Card className="border-cafe-wood/20 shadow-md bg-white">
-            <CardContent className="p-6">
-              <h4 className="text-xl font-semibold text-cafe-brown mb-4">Contact & Location</h4>
-              <div className="space-y-4">
-                <p className="text-cafe-brown/80">
-                  <span className="font-medium block text-cafe-brown">Address:</span>
-                  5005 Rue Sherbrooke O, <br />
-                  Westmount, Montreal, Quebec
-                </p>
-                <p className="text-cafe-brown/80">
-                  <span className="font-medium block text-cafe-brown">Phone:</span>
-                  (514) 555-1234
-                </p>
-                <p className="text-cafe-brown/80">
-                  <span className="font-medium block text-cafe-brown">Email:</span>
-                  bonjour@cafeelleaime.com
-                </p>
-              </div>
-            </CardContent>
-          </Card>
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <Card className="border-cafe-wood/20 shadow-md bg-white">
+              <CardContent className="p-6">
+                <h4 className="text-xl font-semibold text-cafe-brown mb-4">Contact & Location</h4>
+                <div className="space-y-4">
+                  <motion.p 
+                    className="text-cafe-brown/80"
+                    whileHover={{ x: 5 }}
+                  >
+                    <span className="font-medium block text-cafe-brown">Address:</span>
+                    5005 Rue Sherbrooke O, <br />
+                    Westmount, Montreal, Quebec
+                  </motion.p>
+                  <motion.p 
+                    className="text-cafe-brown/80"
+                    whileHover={{ x: 5 }}
+                  >
+                    <span className="font-medium block text-cafe-brown">Phone:</span>
+                    (514) 555-1234
+                  </motion.p>
+                  <motion.p 
+                    className="text-cafe-brown/80"
+                    whileHover={{ x: 5 }}
+                  >
+                    <span className="font-medium block text-cafe-brown">Email:</span>
+                    bonjour@cafeelleaime.com
+                  </motion.p>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
         </div>
         
-        <div className="mt-12 max-w-4xl mx-auto">
+        <motion.div 
+          className="mt-12 max-w-4xl mx-auto"
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.4 }}
+        >
           <Card className="border-cafe-wood/20 shadow-md overflow-hidden">
             <CardContent className="p-0">
               <iframe
@@ -76,7 +125,7 @@ const Contact = () => {
               ></iframe>
             </CardContent>
           </Card>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
