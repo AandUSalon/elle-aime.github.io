@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 
 const About = () => {
   return (
-    <section id="about" className="py-16 md:py-24 bg-white">
-      <div className="cafe-container">
+    <section id="about" className="py-16 md:py-24 bg-white overflow-hidden">
+      <div className="cafe-container px-4 sm:px-6">
         <motion.div 
           className="text-center mb-12"
           initial={{ opacity: 0, y: 30 }}
@@ -45,10 +45,10 @@ const About = () => {
                     transition={{ duration: 0.3 }}
                     src="/lovable-uploads/e2e54234-d5bd-4a62-96de-56b790e594db.png" 
                     alt="Inside Café Elle Aime" 
-                    className="rounded-md shadow-md"
+                    className="rounded-md shadow-md w-full"
                   />
                   <motion.div 
-                    className="absolute -bottom-6 -right-6 md:bottom-8 md:right-8 w-32 h-32 md:w-48 md:h-48 overflow-hidden rounded-md shadow-lg"
+                    className="absolute -bottom-6 -right-6 md:bottom-8 md:right-8 w-24 h-24 sm:w-32 sm:h-32 md:w-48 md:h-48 overflow-hidden rounded-md shadow-lg hidden sm:block"
                     initial={{ y: 100, opacity: 0 }}
                     whileInView={{ y: 0, opacity: 1 }}
                     viewport={{ once: true }}
@@ -67,14 +67,14 @@ const About = () => {
           </motion.div>
           
           <motion.div 
-            className="mt-16 lg:mt-0"
+            className="mt-12 lg:mt-0 px-1"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
             <motion.h4 
-              className="text-2xl font-serif font-semibold text-cafe-brown mb-4"
+              className="text-xl sm:text-2xl font-serif font-semibold text-cafe-brown mb-4"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
@@ -83,7 +83,7 @@ const About = () => {
               A Cozy Corner in Westmount
             </motion.h4>
             <motion.p 
-              className="text-cafe-brown/80 mb-6"
+              className="text-cafe-brown/80 mb-6 text-sm sm:text-base"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
@@ -94,7 +94,7 @@ const About = () => {
               and creating a welcoming space for our community.
             </motion.p>
             <motion.p 
-              className="text-cafe-brown/80 mb-6"
+              className="text-cafe-brown/80 mb-6 text-sm sm:text-base"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
@@ -105,7 +105,7 @@ const About = () => {
               means "She Loves" in French – reflecting our passion for what we do.
             </motion.p>
             <motion.p 
-              className="text-cafe-brown/80"
+              className="text-cafe-brown/80 text-sm sm:text-base"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}

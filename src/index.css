@@ -95,18 +95,24 @@
   body {
     @apply bg-background text-foreground;
   }
+  
+  /* Fix horizontal overflow */
+  html, body {
+    @apply overflow-x-hidden;
+    max-width: 100%;
+  }
 }
 
 @layer components {
   .cafe-container {
-    @apply container mx-auto px-4 md:px-8 max-w-6xl;
+    @apply container mx-auto max-w-6xl;
   }
   
   .section-title {
-    @apply font-serif text-3xl md:text-4xl font-bold mb-6 text-cafe-brown;
+    @apply font-serif text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-cafe-brown;
   }
   
   .section-subtitle {
-    @apply font-cursive text-xl md:text-2xl text-cafe-wood mb-4;
+    @apply font-cursive text-lg sm:text-xl md:text-2xl text-cafe-wood mb-4;
   }
 }

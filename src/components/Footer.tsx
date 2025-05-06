@@ -6,8 +6,8 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
   
   return (
-    <footer className="bg-cafe-brown text-cafe-cream py-10">
-      <div className="cafe-container">
+    <footer className="bg-cafe-brown text-cafe-cream py-8 sm:py-10 overflow-hidden">
+      <div className="cafe-container px-4 sm:px-6">
         <div className="flex flex-col items-center">
           <motion.div 
             className="mb-6"
@@ -17,7 +17,7 @@ const Footer = () => {
             transition={{ duration: 0.6 }}
           >
             <motion.h2 
-              className="font-cursive text-3xl"
+              className="font-cursive text-2xl sm:text-3xl"
               whileHover={{ 
                 scale: 1.1,
                 transition: { duration: 0.2 } 
@@ -36,13 +36,13 @@ const Footer = () => {
                 ease: "easeInOut" 
               }}
             >
-              <Coffee size={16} className="mr-1" />
-              <span className="text-sm">Coffee with love</span>
+              <Coffee size={14} className="mr-1" />
+              <span className="text-xs sm:text-sm">Coffee with love</span>
             </motion.div>
           </motion.div>
           
           <motion.div 
-            className="flex space-x-8 mb-6"
+            className="flex space-x-4 sm:space-x-8 mb-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -55,7 +55,7 @@ const Footer = () => {
           </motion.div>
           
           <motion.div 
-            className="text-center text-cafe-cream/70 text-sm"
+            className="text-center text-cafe-cream/70 text-xs sm:text-sm"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -74,7 +74,7 @@ const FooterLink = ({ href, children }: { href: string; children: React.ReactNod
   return (
     <motion.a 
       href={href} 
-      className="text-cafe-cream hover:text-white transition-colors"
+      className="text-cafe-cream hover:text-white transition-colors text-sm sm:text-base"
       whileHover={{ scale: 1.1, y: -2 }}
       whileTap={{ scale: 0.95 }}
     >
