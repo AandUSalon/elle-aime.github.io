@@ -18,19 +18,29 @@ const Index = () => {
   });
 
   useEffect(() => {
-    // Smooth scroll to section when clicking on navigation links
+    // Improved smooth scroll to section when clicking on navigation links
     const handleAnchorClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       const href = target.closest('a')?.getAttribute('href');
       
       if (href?.startsWith('#') && href !== '#') {
         e.preventDefault();
+        
         const targetId = href.substring(1);
         const targetElement = document.getElementById(targetId);
         
         if (targetElement) {
+          // Get the navbar height dynamically
+          const navbar = document.querySelector('header');
+          const navbarHeight = navbar ? navbar.offsetHeight : 0;
+          
+          // Calculate the element's position and adjust for the navbar
+          const elementPosition = targetElement.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.scrollY - navbarHeight - 20; // Extra 20px buffer
+          
+          // Smooth scroll to the adjusted position
           window.scrollTo({
-            top: targetElement.offsetTop - 80, // Adjust for header height
+            top: offsetPosition,
             behavior: 'smooth'
           });
         }
